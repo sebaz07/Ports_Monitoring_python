@@ -1,7 +1,7 @@
 
 # Proyecto de Monitoreo de Conexiones de Red
 
-Este proyecto está diseñado para monitorear el estado de las conexiones de red en puertos específicos y exponer estas métricas a Prometheus para su recolección y análisis. Aquí hay una descripción general de cómo funciona:
+Este proyecto está diseñado para monitorear el estado de las conexiones de red en puertos específicos y exponer estas métricas a Prometheus para su recolección y análisis. A continuación, se presenta una descripción general de su funcionamiento:
 
 ## Archivos Principales
 
@@ -43,3 +43,13 @@ Este proyecto está diseñado para monitorear el estado de las conexiones de red
 ## Ejecución del Proyecto
 
 Para ejecutar el proyecto, simplemente corre uno de los scripts (`Monitoring_ports.py` o `netstatPorts.py`). Asegúrate de tener las dependencias necesarias instaladas (`psutil`, `prometheus_client`) y de configurar las variables de entorno adecuadas si es necesario.
+
+```mermaid
+graph TD
+    A[Definir Puertos a Monitorear] --> B[Crear Métricas de Prometheus]
+    B --> C[Iniciar Servidor HTTP]
+    C --> D[Ejecutar Función monitorear_puertos cada 5 segundos]
+    D --> E[Obtener Estado de Conexiones de Red]
+    E --> F[Actualizar Métricas de Prometheus]
+    F --> G[Exponer Métricas a Prometheus]
+```
